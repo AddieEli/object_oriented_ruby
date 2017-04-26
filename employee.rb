@@ -36,8 +36,19 @@ class Employee
 
 end
 
-# employee_1 = Employee.new("Jim", "Jefferies", 70000, true)
-# employee_2 = Employee.new("Maria", "Bamford", 80000, true)
+
+class Manager < Employee    #inherits from the Employee task (duplicating the reader/writer code)
+  def initialize(input_options)
+    super(input_options)                         #includes all initialize previously mentioned in first class/don't need to write out input_options, being explicit 
+    @employees = input_options[:employees]
+  end
+  def send_report
+    puts "Sending email..."
+    # code to send report
+    puts "Email Sent."
+  end 
+
+end
 
 employee_1 = Employee.new(
                            first_name: "Jim", 
@@ -52,15 +63,22 @@ employee_2 = Employee.new(first_name: "Maria",
                            active: true
                            )
 
-# employee_1.print_info
-# employee_2.print_info
-# employee_2.give_annual_raise
-# employee_2.print_info
-# puts employee_2.first_name
-# puts employee_2.last_name
-# puts employee_2.salary
-# puts employee_2.active
+manager = Manager.new(
+                      first_name: "Patton",
+                      last_name: "Oswalt",
+                      salary: 100000,
+                      active: true,
+                      employees: [employee_1, employee_2]
+                      )
+
+employee_1.print_info
+employee_2.print_info
+manager.print_info
+manager.send_report
 
 puts employee_1.active
 employee_1.active = false   # long hand written: employee_1.active=(false)
 puts employee_1.active 
+
+
+

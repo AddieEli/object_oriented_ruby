@@ -19,6 +19,15 @@ class Item
 
 end 
 
+class Food < Item
+  attr_reader :shelf_life
+  def initialize(input_options) 
+  super
+  @shelf_life = input_options[:shelf_life]
+end
+end
+
+
 item_one = Item.new(
                     color: "black",
                     size: "large",
@@ -31,8 +40,15 @@ item_two = Item.new(
                     price: 90
                    )
 
+chicken = Food.new(
+                    color: "red",
+                    size: "large",
+                    price: 90,
+                    shelf_life: "4 years")
+
+
 puts item_one.color 
 item_one.price = 90
 puts item_one.price
-
+puts chicken.shelf_life
 

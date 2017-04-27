@@ -11,3 +11,6 @@ items = [
 p items.map {|hash| hash[:id]}  
 
 
+arr = [[":tuna", 5], [:bob, "Q"]]
+zipped_hash = arr.to_h
+p zipped_hash
